@@ -4,7 +4,7 @@ function VacationDiary() {
   this.currentId = 0
 }
 
-VacationDiary.prototype.addDestination = function() {
+VacationDiary.prototype.addDestination = function(destination) {
   destination.id = this.assignId();
   this.destinations.push(destination);
 }
@@ -31,8 +31,10 @@ function displayVacationDiary (vacationDiaryToDisplay){
   let htmlForDestinationInfo = "";
   vacationDiaryToDisplay.destinations.forEach(function(destination){
     htmlForDestinationInfo += "<li id=" + destination.id + ">" + destination.location + "</li>"
-  })
-}
+  });
+  destinationList.html(htmlForDestinationInfo);
+};
+
 $(document).ready(function(){
   $("form#vacation-info").submit(function(event){
     event.preventDefault();
@@ -43,6 +45,8 @@ $(document).ready(function(){
     const notes = $("input#notes").val();
 
     let newDestination = new Destination(location, landmarks, timeOfYear, food, notes)
+    vacationDiary.addDestination(newDestination);
+    displayVacationDiary(vacationDiary);
 
     $("#user-input-info").show();
   });
