@@ -1,3 +1,10 @@
 #user-input-info {
   display: none;
 }
+#test-showing {
+  display: none;
+}
+
+.btn {
+  border: 2px;
+}
