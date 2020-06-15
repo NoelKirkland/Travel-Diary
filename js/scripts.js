@@ -30,13 +30,16 @@ function displayVacationDiary (vacationDiaryToDisplay){
   let destinationList = $("ul#destinations");
   let htmlForDestinationInfo = "";
   vacationDiaryToDisplay.destinations.forEach(function(destination){
-    htmlForDestinationInfo += "<li id=" + destination.id + ">" + destination.location + "</li>"
+    htmlForDestinationInfo += "<li id=" + destination.id + ">" + "<span class='clickable' id='test'>" + destination.location + "</span>" + "</li>"
   });
   destinationList.html(htmlForDestinationInfo);
 };
 
 $(document).ready(function(){
-  $("form#vacation-info").submit(function(event){
+  $("#test").click(function() {
+    $("#test-showing").fadeToggle();
+  });
+  $("form#vacation-info").submit(function(event) {
     event.preventDefault();
     const location = $("input#location").val();
     const landmarks = $("input#landmarks").val();
