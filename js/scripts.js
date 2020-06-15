@@ -1,6 +1,17 @@
 // Buisniness logic
 function VacationDiary() {
-  this.destinations = [];
+  this.destinations = [],
+  this.currentId = 0
+}
+
+VacationDiary.prototype.addDestination = function() {
+  destination.id = this.assignId();
+  this.destinations.push(destination);
+}
+
+VacationDiary.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
 }
 
 function Destination(location, landmarks, timeOfYear, food, notes) {
@@ -11,10 +22,17 @@ function Destination(location, landmarks, timeOfYear, food, notes) {
   this.notes = notes;
 }
 
-VacationDiary.prototype.addDestination = function() {
-  this.destinations.push(destination);
-}
+
 // User interface
+let vacationDiary = new VacationDiary();
+
+function displayVacationDiary (vacationDiaryToDisplay){
+  let destinationList = $("ul#destinations");
+  let htmlForDestinationInfo = "";
+  vacationDiaryToDisplay.destinations.forEach(function(destination){
+    htmlForDestinationInfo += "<li id=" + destination.id + ">" + destination.location + "</li>"
+  })
+}
 $(document).ready(function(){
   $("form#vacation-info").submit(function(event){
     event.preventDefault();
@@ -24,10 +42,8 @@ $(document).ready(function(){
     const food = $("input#food").val();
     const notes = $("input#notes").val();
 
-    let vacationDiary = new VacationDiary();
-    let newTrip = new Destination(location, landmarks, timeOfYear, food, notes)
+    let newDestination = new Destination(location, landmarks, timeOfYear, food, notes)
 
-    $("user-input-info").show();
-    
+    $("#user-input-info").show();
   });
 });
