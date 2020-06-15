@@ -1,0 +1,11 @@
+Specifications:
+
+Create a form in our index file that allows the user to enter multiple peices of info about their latest travels
+
+Create a constructor function that collects the user's input and arranges it into an object
+
+Create another constructor function that takes all vacation objects and puts them into another object
+
+Create a prototype method that pushes all of the vacation objects into out vacation diary
+
+Display the vacation diary on the front end and have it list each individual vacation
